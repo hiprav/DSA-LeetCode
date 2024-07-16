@@ -20,14 +20,27 @@ public class flipping_an_image {
             }
         }
     }
-    static int[][] flip2(int[][] arr){
-        for(int[] row : arr){
-            for (int i = 0; i < (arr[0].length+2)/2; i++) {//    this is kunals algo
-                int temp=row[i]^1;
-                row[i]=row[arr[0].length-1-i]^1;
-                row[arr[0].length-1-i]=temp;
+    static int[][] flip2(int[][] image){
+        for (int i = 0; i < image.length; i++) {
+            int j = 0;
+            int k = image.length - 1;
+            while (j < k) {
+                int temp = image[i][j];
+                image[i][j] = image[i][k];
+                image[i][k] = temp;
+                j++;
+                k--;
             }
         }
-        return arr;
+        for(int i = 0; i < image.length; i++) {
+            for(int j = 0; j < image[0].length; j++) {
+                if(image[i][j] == 0){
+                    image[i][j] = 1;
+                } else {
+                    image[i][j] = 0;
+                }
+            }
+        }
+        return image;
     }
 }

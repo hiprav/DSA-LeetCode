@@ -1,27 +1,32 @@
 package com.leet_code;
 
 public class first_missing_positive {
-    public static void main(String[] args) {
-       int[] arr={3,4,-1,1};
-        System.out.println(FMP(arr));
+    private void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
-    static int FMP(int[]arr) {
-        int i=0;
-        while (i < arr.length){
-            if (arr[i] > 0 && arr[i] < arr.length && arr[i] != arr[arr[i]-1]) {
-                int temp=arr[arr[i]-1];
-                arr[arr[i]-1]=arr[i];
-                arr[i]=temp;
-            }else {
-                i++;
+
+    public int firstMissingPositive(int[] nums) {
+        int n = nums.length;
+
+        // Place each positive integer i at index i-1 if possible
+        for (int i = 0; i < n; i++) {
+            while (nums[i] > 0 && nums[i] <= n && nums[i] != nums[nums[i] - 1]) {
+                swap(nums, i, nums[i] - 1);
             }
         }
-        for (int j = 0; j < arr.length; j++) {
-            if (arr[j]!= j+1){
-                return j+1;
+
+        // Find the first missing positive integer
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i + 1) {
+                return i + 1;
             }
         }
-        return arr.length;
+
+        // If all positive integers from 1 to n are present, return n + 1
+        return n + 1;
     }
 }
+
 

@@ -4,7 +4,7 @@ public class Happy_Number {
     public static void main(String[] args) {// very confusing  // Google
         System.out.println(ishappy(19));
     }
-    static public boolean ishappy(int n){
+    static public boolean ishappy(int n){//nice sum
         int slow = n;
         int fast = n;
         do {

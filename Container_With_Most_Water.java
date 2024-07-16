@@ -5,7 +5,7 @@ public class Container_With_Most_Water {
         int[] arr={1,8,6,2,5,4,8,3,7};
         System.out.println(maxArea(arr));
     }
-    public static int maxArea(int[] arr) {
+    public static int maxArea(int[] arr) {//must question hai
         int l=0,r= arr.length-1;
         int max=0;
         while (l<=r){
