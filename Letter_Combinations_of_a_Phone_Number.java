@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Letter_Combinations_of_a_Phone_Number {
     public static void main(String[] args) {
-        System.out.println(-2==-'2'-'0');
+        System.out.println(letterCombinations("26"));
     }
     public static List<String> letterCombinations(String digits) {
         List<String> ans=new ArrayList<>();
@@ -30,6 +30,7 @@ public class Letter_Combinations_of_a_Phone_Number {
     private static void help(String combo, HashMap<Integer, String> dile, String digits, List<String> ans) {
         if (digits.isEmpty()) {
             ans.add(combo);
+            System.out.println(combo);
         }else {
             String x = dile.get(digits.charAt(0) - '0');
             for (char z : x.toCharArray()) {//make habit of using advance for loop

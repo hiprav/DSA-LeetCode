@@ -17,4 +17,16 @@ public class Rotate_Array {
         }
         nums=a;
     }
+    public void rotate2(int[] nums, int k) {
+        int n = nums.length;
+        int[] ans = new int[n];
+        for(int i =0;i<nums.length;i++)
+        {
+            int s = (i+k)%n;
+            ans[s] = nums[i];
+        }
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = ans[i];
+        }
+    }
 }

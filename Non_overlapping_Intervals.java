@@ -1,40 +1,26 @@
 package com.leet_code;
 
+import java.util.Arrays;
+
 public class Non_overlapping_Intervals {
     public static void main(String[] args) {
-
+int[][]a={{1,2},{1,4},{2,3},{3,4}};
+        System.out.println(eraseOverlapIntervals(a));
     }
-    public int eraseOverlapIntervals(int[][] intervals) {// you have not done yet//just copy pasted
-        int max = intervals[0][1];
-        int min = max;
+    public static int eraseOverlapIntervals(int[][] intervals) {// you have not done yet//just copy pasted
+        int n = intervals.length;
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[1], b[1]));
 
-        for (int i = 1; i < intervals.length; i++) {
-            max = Math.max(max, intervals[i][1]);
-            min = Math.min(min, intervals[i][1]);
-        }
+        int end = intervals[0][1];
+        int count = 0;
 
-        int shift = 1 - min;
-        int maxIntervalRange = 2 + max - min;
-        int[] rightEnds = new int[maxIntervalRange];
-
-        for (int[] interval : intervals) {
-            int left = interval[0] + shift;
-            int right = interval[1] + shift;
-            if (left > rightEnds[right]) {
-                rightEnds[right] = left;
-            }
-        }
-
-        int start = 1;
-        int count = 1;
-
-        for (int i = 2; i < maxIntervalRange; i++) {
-            if (start <= rightEnds[i]) {
+        for (int i = 1; i < n; i++) {
+            if (intervals[i][0] < end) {
                 count++;
-                start = i;
+            }else{
+                end=intervals[i][1];
             }
         }
-
-        return intervals.length - count;
+        return count;
     }
 }

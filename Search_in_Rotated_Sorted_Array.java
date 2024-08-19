@@ -2,7 +2,7 @@ package com.leet_code;
 
 public class Search_in_Rotated_Sorted_Array {
     public static void main(String[] args) {
-        int[] arr={4,5,5,6,1,2,2,3};
+        int[] arr={4,5,6,7,0,1,2};
         System.out.println(search(arr,1));
     }
     public static int search(int[] nums, int target) {
